@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://erqtl0jnqahl"]
+
+[ext_resource type="PackedScene" uid="uid://b6437n41g5yo2" path="res://scenes/Dirt_Row_fixed.tscn" id="1_oooi1"]
+[ext_resource type="PackedScene" uid="uid://ovvk11jdait5" path="res://scenes/Dirt_Row_End_Fixed.tscn" id="2_d26v1"]
+
+[node name="Crop_Row" type="Node3D"]
+
+[node name="crops_dirtRow" parent="." instance=ExtResource("1_oooi1")]
+
+[node name="crops_dirtRowEnd" parent="." instance=ExtResource("2_d26v1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 0)
+
+[node name="crops_dirtRowEnd2" parent="." instance=ExtResource("2_d26v1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)

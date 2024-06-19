@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://7yp8c06uh7hb"]
+
+[ext_resource type="PackedScene" uid="uid://qam05nvj15me" path="res://scenes/Player.tscn" id="1_0c2pr"]
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_xuxu8"]
+[ext_resource type="PackedScene" uid="uid://erqtl0jnqahl" path="res://scenes/crop_row.tscn" id="2_nqfoq"]
+[ext_resource type="PackedScene" uid="uid://cxb4mwjdh5o5i" path="res://scenes/Apple_Crop.tscn" id="4_a8hwi"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mq0he"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e05rc"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_xuxu8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_mq0he")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 40, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_e05rc")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_0c2pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 3
+
+[node name="Crop_Row" parent="." instance=ExtResource("2_nqfoq")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0.4, -10)
+
+[node name="Apple_Crop2" parent="." instance=ExtResource("4_a8hwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
+collision_layer = 4
+collision_mask = 7
